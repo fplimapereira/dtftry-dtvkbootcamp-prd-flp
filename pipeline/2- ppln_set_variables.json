@@ -1,0 +1,88 @@
+{
+	"name": "2- ppln_set_variables",
+	"properties": {
+		"activities": [
+			{
+				"name": "SVT - Define_data_particao",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "v_data_particao",
+					"value": {
+						"value": "@convertFromUtc(utcNow(), \n'E. South America Standard Time', 'yyyy/MM/dd')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SVT - Define_diretorio_destino",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "v_diretorio_destino",
+					"value": {
+						"value": "@toLower(concat('Text', '/', 'ENEM'))\n",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SVT - Define_arquivo_destino",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "SVT - Define_diretorio_destino",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "SVT - Define_data_particao",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "v_arquivo_destino",
+					"value": {
+						"value": "@toLower(concat(variables('v_diretorio_destino'),\n'/', pipeline().parameters.p_assunto_origem, '_',\n if(empty(variables('v_data_particao')), '',\n concat('/', variables('v_data_particao')))))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"p_assunto_origem": {
+				"type": "string",
+				"defaultValue": "prova_enem"
+			},
+			"p_diretorio_destino": {
+				"type": "string",
+				"defaultValue": "text/enem"
+			},
+			"p_container_destino": {
+				"type": "string",
+				"defaultValue": "raw"
+			}
+		},
+		"variables": {
+			"v_data_particao": {
+				"type": "String"
+			},
+			"v_diretorio_destino": {
+				"type": "String"
+			},
+			"v_arquivo_destino": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "study activities"
+		},
+		"annotations": []
+	}
+}
