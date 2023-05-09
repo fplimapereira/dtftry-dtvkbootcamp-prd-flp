@@ -1,0 +1,12 @@
+{
+	"name": "lnkdsvs_kv_bootcamp",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Buscar chaves no meu key vault",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kv-dtvk-botcamp-prd-flp.vault.azure.net/"
+		}
+	}
+}

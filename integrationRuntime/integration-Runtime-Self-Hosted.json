@@ -1,0 +1,7 @@
+{
+	"name": "integration-Runtime-Self-Hosted",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Pegar dados locais"
+	}
+}

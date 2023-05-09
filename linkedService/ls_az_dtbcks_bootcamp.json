@@ -1,0 +1,20 @@
+{
+	"name": "ls_az_dtbcks_bootcamp",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-1263739687729793.13.azuredatabricks.net",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "lnkdsvs_kv_bootcamp",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "secret-adbricks-cl-bootcamp"
+			},
+			"existingClusterId": "0507-233833-1cwhof13"
+		}
+	}
+}

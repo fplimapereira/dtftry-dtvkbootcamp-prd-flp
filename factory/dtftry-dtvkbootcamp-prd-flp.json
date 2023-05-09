@@ -1,0 +1,9 @@
+{
+	"name": "dtftry-dtvkbootcamp-prd-flp",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "67090009-4389-418f-87a1-4a670061a3dc",
+		"tenantId": "58653753-eac9-4ff4-962a-e3c56e3cf4e1"
+	}
+}

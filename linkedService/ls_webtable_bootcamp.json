@@ -1,0 +1,17 @@
+{
+	"name": "ls_webtable_bootcamp",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "recurso de webscraping da azure. Página utilizada é uma pesquisa de salário mínimo e cesta básicas do dieese.",
+		"annotations": [],
+		"type": "Web",
+		"typeProperties": {
+			"url": "https://www.dieese.org.br/analisecestabasica/salarioMinimo.html",
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "integration-Runtime-Self-Hosted",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
