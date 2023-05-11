@@ -1,0 +1,167 @@
+{
+	"name": "3 - ppln_get_metadata",
+	"properties": {
+		"activities": [
+			{
+				"name": "GTM - Buscar_Arquivo",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_text_dls",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_container": {
+								"value": "@pipeline().parameters.p_container_origem",
+								"type": "Expression"
+							},
+							"p_diretorio": {
+								"value": "@pipeline().parameters.p_diretorio",
+								"type": "Expression"
+							},
+							"p_arquivo": {
+								"value": "@pipeline().parameters.p_arquivo",
+								"type": "Expression"
+							},
+							"p_delimitador": {
+								"value": "@pipeline().parameters.p_delimitador",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "SVB - Lista_de_Arquivos",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GTM - Buscar_Arquivo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "v_lista_arquivos",
+					"value": {
+						"value": "@activity('GTM - Buscar_Arquivo').output.childItems",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "GTM - Valida_arquivo_existe",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_text_dls",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_container": {
+								"value": "@pipeline().parameters.p_container_origem",
+								"type": "Expression"
+							},
+							"p_diretorio": {
+								"value": "@pipeline().parameters.p_diretorio",
+								"type": "Expression"
+							},
+							"p_arquivo": {
+								"value": "@pipeline().parameters.p_arquivo",
+								"type": "Expression"
+							},
+							"p_delimitador": {
+								"value": "@pipeline().parameters.p_delimitador",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "SVB - Valida_arquivo_existe",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GTM - Valida_arquivo_existe",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "v_lista_arquivos",
+					"value": {
+						"value": "@activity('GTM - Valida_arquivo_existe').output.exists",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"p_container_origem": {
+				"type": "string"
+			},
+			"p_diretorio": {
+				"type": "string"
+			},
+			"p_arquivo": {
+				"type": "string"
+			},
+			"p_delimitador": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"v_lista_arquivos": {
+				"type": "Array"
+			},
+			"v_arquivo_existe": {
+				"type": "Boolean"
+			}
+		},
+		"folder": {
+			"name": "study activities"
+		},
+		"annotations": []
+	}
+}
