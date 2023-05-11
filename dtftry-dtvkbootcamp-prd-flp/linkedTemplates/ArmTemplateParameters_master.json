@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dtftry-dtvkbootcamp-prd-flp"
+		},
+		"ls_datalk_strg_bootcamp_accountKey": {
+			"value": ""
+		},
+		"lnkdsvs_kv_bootcamp_properties_typeProperties_baseUrl": {
+			"value": "https://kv-dtvk-botcamp-prd-flp.vault.azure.net/"
+		},
+		"ls_az_dtbcks_bootcamp_properties_typeProperties_existingClusterId": {
+			"value": "0507-233833-1cwhof13"
+		},
+		"ls_datalk_strg_bootcamp_properties_typeProperties_url": {
+			"value": "https://dlsdtvkbootcampprdflp.dfs.core.windows.net/"
+		},
+		"ls_http_api_bootcamp_properties_typeProperties_url": {
+			"value": "https://dummyjson.com/users"
+		},
+		"ls_webtable_bootcamp_properties_typeProperties_url": {
+			"value": "https://www.dieese.org.br/analisecestabasica/salarioMinimo.html"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
