@@ -27,10 +27,7 @@
 								"value": "@pipeline().parameters.p_diretorio",
 								"type": "Expression"
 							},
-							"p_arquivo": {
-								"value": "@pipeline().parameters.p_arquivo",
-								"type": "Expression"
-							},
+							"p_arquivo": "*.csv",
 							"p_delimitador": {
 								"value": "@pipeline().parameters.p_delimitador",
 								"type": "Expression"
@@ -105,7 +102,7 @@
 						}
 					},
 					"fieldList": [
-						"childItems"
+						"exists"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -129,12 +126,25 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "v_lista_arquivos",
+					"variableName": "v_arquivo_existe",
 					"value": {
 						"value": "@activity('GTM - Valida_arquivo_existe').output.exists",
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			}
 		],
 		"parameters": {
