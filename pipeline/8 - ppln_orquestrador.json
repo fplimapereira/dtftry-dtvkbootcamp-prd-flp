@@ -1,0 +1,36 @@
+{
+	"name": "8 - ppln_orquestrador",
+	"properties": {
+		"activities": [
+			{
+				"name": "scraping",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "api",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "scraping",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "study activities"
+		},
+		"annotations": []
+	}
+}
