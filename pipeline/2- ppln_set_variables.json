@@ -49,7 +49,33 @@
 				"typeProperties": {
 					"variableName": "v_arquivo_destino",
 					"value": {
-						"value": "@toLower(concat(variables('v_diretorio_destino'),\n'/', pipeline().parameters.p_assunto_origem, '_',\n if(empty(variables('v_data_particao')), '',\n concat('/', variables('v_data_particao')))))",
+						"value": "@toLower(concat(variables('v_diretorio_destino'),\n'/', pipeline().parameters.p_assunto_origem, '',\n if(empty(variables('v_data_particao')), '',\n concat('/', variables('v_data_particao')))))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "SVB- Define_diretorio_completo",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "SVT - Define_data_particao",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "SVT - Define_diretorio_destino",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "v_diretorio_completo",
+					"value": {
+						"value": "@toLower(concat(variables('v_diretorio_destino'), '/',  pipeline().parameters.p_assunto_origem, if(empty(variables('v_data_particao')), '', concat('/', variables('v_data_particao')))))\n\n\n                ",
 						"type": "Expression"
 					}
 				}
@@ -77,6 +103,9 @@
 				"type": "String"
 			},
 			"v_arquivo_destino": {
+				"type": "String"
+			},
+			"v_diretorio_completo": {
 				"type": "String"
 			}
 		},
