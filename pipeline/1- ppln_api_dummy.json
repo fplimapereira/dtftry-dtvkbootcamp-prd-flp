@@ -1,0 +1,65 @@
+{
+	"name": "1- ppln_api_dummy",
+	"properties": {
+		"activities": [
+			{
+				"name": "CPDT - Ingestao Raw",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_json_dummy",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_json_dl",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_container": "raw",
+							"p_diretorio": "apis/dummy",
+							"p_arquivo": "clientes_yyyymmdd"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "study activities"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-05-09T18:45:31Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
