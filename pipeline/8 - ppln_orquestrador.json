@@ -1,0 +1,44 @@
+{
+	"name": "8 - ppln_orquestrador",
+	"properties": {
+		"activities": [
+			{
+				"name": "scraping",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "0-ppline_web_scraping",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "api",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "scraping",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "1- ppln_api_dummy",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "study activities"
+		},
+		"annotations": []
+	}
+}

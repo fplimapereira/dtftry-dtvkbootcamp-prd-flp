@@ -1,0 +1,18 @@
+{
+	"name": "ls_az_sql_bootcamp",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sql-bootcamp-dtvk.database.windows.net;Initial Catalog=sqldb-bootcamp-dtvk-prd;User ID=fplimapereira",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "lnkdsvs_kv_bootcamp",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "secret-sqldb-bootcamp-dtvk-prd"
+			}
+		}
+	}
+}
