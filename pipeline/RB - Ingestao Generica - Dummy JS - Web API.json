@@ -142,6 +142,10 @@
 							"type": "Expression"
 						}
 					}
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_az_dtbcks_bootcamp",
+					"type": "LinkedServiceReference"
 				}
 			},
 			{

@@ -17,6 +17,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebookPath": "/Repos/weslley_estudos@outlook.com/adb-bootcamp-prd-wsy/notebooks/delta/silver/customer_sucess/web_application/users_app"
+				},
+				"linkedServiceName": {
+					"referenceName": "ls_az_dtbcks_bootcamp",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
