@@ -201,7 +201,19 @@
 					},
 					"enableStaging": false,
 					"parallelCopies": 2
-				}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_json_dummy",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_json_dl",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"concurrency": 30,
