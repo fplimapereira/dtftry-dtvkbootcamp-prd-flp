@@ -121,7 +121,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebookPath": {
-						"value": "@concat(\n    '/Repos/weslley_estudos@outlook.com/adb-bootcamp-prd-wsy/notebooks/delta/bronze/',\n    variables('v_diretorio_destino'), '/generico_json'\n)",
+						"value": "@concat(\n    '/Repos/fplimapereira@gmail.com/dtb-dtvk-bootcamp-flp/notebooks/delta/bronze/',\n    variables('v_diretorio_destino'), '/generico_json'\n)",
 						"type": "Expression"
 					},
 					"baseParameters": {
@@ -211,7 +211,21 @@
 				"outputs": [
 					{
 						"referenceName": "ds_json_dl",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"p_container": {
+								"value": "@pipeline().parameters.p_container_destino",
+								"type": "Expression"
+							},
+							"p_diretorio": {
+								"value": "@variables('v_diretorio_destino')",
+								"type": "Expression"
+							},
+							"p_arquivo": {
+								"value": "@variables('v_arquivo_destino')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
