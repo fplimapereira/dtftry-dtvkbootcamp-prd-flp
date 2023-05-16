@@ -121,7 +121,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"notebookPath": {
-						"value": "@concat(\n    '/Repos/fplimapereira@gmail.com/dtb-dtvk-bootcamp-flp/notebooks/delta/bronze/',\n    variables('v_diretorio_destino'), '/generico_json'\n)",
+						"value": "@concat(\n    '/Repos/fp.limapereira@gmail.com/dtb-dtvk-bootcamp-flp/notebooks/delta/bronze/',\n    variables('v_diretorio_destino'), '/generico_json'\n)",
 						"type": "Expression"
 					},
 					"baseParameters": {
@@ -218,7 +218,7 @@
 								"type": "Expression"
 							},
 							"p_diretorio": {
-								"value": "@variables('v_diretorio_destino')",
+								"value": "@variables('v_diretorio_completo')",
 								"type": "Expression"
 							},
 							"p_arquivo": {
